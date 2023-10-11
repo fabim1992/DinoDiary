@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "930183812328",
+    "project_id": "authtcc",
+    "storage_bucket": "authtcc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930183812328:android:5ab18a511cc3b41298655d",
+        "android_client_info": {
+          "package_name": "com.example.dino_diary"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8epzEzqSiQjdcHK3tqQ-Of5-qPri7I6U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
