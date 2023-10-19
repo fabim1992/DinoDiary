@@ -18,16 +18,16 @@ class MyButton extends StatelessWidget {
         padding: const EdgeInsets.all(25),
         margin: const EdgeInsets.symmetric(horizontal: 25),
         decoration: BoxDecoration(
-          color: Color(0xff04ca7f),
+          color: Color(0xFFda8873),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
           child: Text(
             text,
             style: const TextStyle(
-              color: Colors.white,
+              color: Color(0xFFEEC584),
               fontWeight: FontWeight.bold,
-              fontSize: 16,
+              fontSize: 18,
             ),
           ),
         ),
