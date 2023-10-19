@@ -1,8 +1,3 @@
-import 'package:dino_diary/pages/auth_page.dart';
-import 'package:dino_diary/pages/calendar_page.dart';
-import 'package:dino_diary/pages/home_page.dart';
-import 'package:dino_diary/pages/login_or_register.dart';
-import 'package:dino_diary/pages/register_page.dart';
 import 'package:dino_diary/services/auth_service.dart';
 import 'package:dino_diary/widgets/login_with.dart';
 import 'package:dino_diary/widgets/my_button.dart';
@@ -10,7 +5,6 @@ import 'package:dino_diary/widgets/my_textbold.dart';
 import 'package:dino_diary/widgets/my_textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -61,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Colors.deepPurple,
+          backgroundColor: Color(0xFF9CE37D),
           title: Center(
               child: Text(
             message,
@@ -75,48 +69,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF126fc5),
-      bottomNavigationBar: Container(
-        color: Colors.black,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-          child: GNav(
-            tabBorderRadius: 20,
-            backgroundColor: Colors.black,
-            color: Colors.white,
-            activeColor: Color(0xFF126fc5),
-            tabBackgroundColor: Colors.grey.shade800,
-            gap: 8,
-            onTabChange: (index) {
-              if (index == 0) {
-                print(index);
-              }
-            },
-            tabs: const [
-              GButton(
-                icon: Icons.account_circle,
-                text: 'profile',
-              ),
-              GButton(
-                icon: Icons.event_note,
-                text: 'calendario',
-              ),
-              GButton(
-                icon: Icons.add_circle_outline,
-                text: 'Novo Diario',
-              ),
-              GButton(
-                icon: Icons.pets,
-                text: 'Dino',
-              ),
-              GButton(
-                icon: Icons.settings,
-                text: 'configuracoes',
-              ),
-            ],
-          ),
-        ),
-      ),
+      backgroundColor: const Color(0xFF8FC0A9),
+      
       body: SafeArea(
         child: Center(
           child: ListView(
@@ -136,9 +90,9 @@ class _LoginPageState extends State<LoginPage> {
               //text
               const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
-                  'Bem-vindo a DinoDiary',
+                  'Bem-vindo(a) ao DinoDiary!',
                   style: TextStyle(
-                    color: Color(0xff04ca7f),
+                    color: Color(0xFFFAF3DD),
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -149,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
               //username
               MyTextField(
                 controller: usernameController,
-                hintText: 'Usuario',
+                hintText: 'Email',
                 obscureText: false,
               ),
 
@@ -169,6 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                   MyTextBold(
                     isBold: false,
                     myText: 'Esqueceu a senha?',
+                    
                   ),
                 ],
               ),
@@ -181,7 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                 onTap: signUserIn,
               ),
 
-              const SizedBox(height: 50),
+              const SizedBox(height: 20),
 
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -193,7 +148,7 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
 
-              const SizedBox(height: 50),
+              const SizedBox(height: 20),
               //todas as opcoes de login
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -226,15 +181,17 @@ class _LoginPageState extends State<LoginPage> {
                     child: const Text(
                       '  Registre-se aqui',
                       style: TextStyle(
-                        color: Color(0xffffc306),
+                        color: Colors.amberAccent,
                         //color: Color(0xff2822cd),
-                        fontSize: 16,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ],
-              )
+              ),
+
+              //const SizedBox(height: 50),
             ],
           ),
         ),
