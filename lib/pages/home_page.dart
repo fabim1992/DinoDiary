@@ -1,10 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 //import './calendar_page.dart';
-import 'package:dino_diary/services/auth_service.dart';
-import 'package:dino_diary/widgets/login_with.dart';
 import 'package:dino_diary/widgets/my_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:dino_diary/pages/note_editor.dart';
+import 'package:dino_diary/pages/note_reader.dart';
+import 'package:dino_diary/style/app_style.dart';
+import 'package:dino_diary/widgets/card_diary.dart';
 
 final User user = FirebaseAuth.instance.currentUser!;
 
@@ -26,12 +31,7 @@ class _HomePageState extends State<HomePage> {
       ),
     ),
     CalendarPage(),
-    Center(
-      child: Icon(
-        Icons.add_circle_outline,
-        size: 150,
-      ),
-    ),
+    RegistroPage(),
     Center(
       child: Icon(
         Icons.pets,
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
         selectedFontSize: 20,
         unselectedIconTheme: IconThemeData(color: Color(0xFFC8D5B9)),
         selectedIconTheme: IconThemeData(color: Color(0xFF8FC0A9), size: 40),
-        selectedItemColor: const Color(0xFF8FC0A9),
+        selectedItemColor: Color(0xFF8FC0A9),
         selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
         iconSize: 40,
         items: const <BottomNavigationBarItem>[
@@ -212,6 +212,79 @@ class _ConfigState extends State<ConfigPage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+//REGISTRO
+
+class RegistroPage extends StatelessWidget {
+  const RegistroPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppStyle.mainColor,
+      
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Seus ultimos registros",
+              style: GoogleFonts.roboto(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+              ),
+            ),
+            const SizedBox(
+              height: 20.0,
+            ),
+            Expanded(
+              child: StreamBuilder<QuerySnapshot>(
+                stream:
+                    FirebaseFirestore.instance.collection("Notes").snapshots(),
+                builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  if (snapshot.hasData) {
+                    return GridView(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2),
+                      children: snapshot.data!.docs
+                          .map((note) => CardDiary(() {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          NoteReaderPage(note),
+                                    ));
+                              }, note))
+                          .toList(),
+                    );
+                  }
+                  return Text(
+                    "Sem registros",
+                    style: GoogleFonts.nunito(color: Colors.white),
+                  );
+                },
+              ),
+            )
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => NoteEditorPage()));
+        },
+        label: const Text("Adicionar Registro"),
+        icon: const Icon(Icons.add),
       ),
     );
   }
