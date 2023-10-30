@@ -12,6 +12,7 @@ class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   final user = FirebaseAuth.instance.currentUser!;
+  var date = DateTime.now;
 
   // sign user out
   void signUserOut() {
