@@ -61,7 +61,7 @@ class _RegisterPageState extends State<RegisterPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Colors.deepPurple,
+          backgroundColor: Color(0xFF9CE37D),
           title: Center(
               child: Text(
             message,
@@ -75,7 +75,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF126fc5),
+      backgroundColor: const Color(0xFF8FC0A9),
       body: SafeArea(
         child: Center(
           child: ListView(
@@ -95,7 +95,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 Text(
                   'Registre-se no DinoDiary',
                   style: TextStyle(
-                    color: Color(0xff04ca7f),
+                    color: Color(0xFFFAF3DD),
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -106,7 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
               //username
               MyTextField(
                 controller: usernameController,
-                hintText: 'Usuario',
+                hintText: 'Email',
                 obscureText: false,
               ),
 
@@ -135,7 +135,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 onTap: signUserUp,
               ),
 
-              const SizedBox(height: 50),
+              const SizedBox(height: 20),
 
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -147,7 +147,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ],
               ),
 
-              const SizedBox(height: 50),
+              const SizedBox(height: 20),
               //todas as opcoes de login
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -180,9 +180,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: const Text(
                       '  Entre Aqui',
                       style: TextStyle(
-                        color: Color(0xffffc306),
+                        color: Colors.amberAccent,
                         //color: Color(0xff2822cd),
-                        fontSize: 16,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
