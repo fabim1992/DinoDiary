@@ -1,3 +1,4 @@
+import 'package:dino_diary/pages/calendar_page.dart';
 import 'package:dino_diary/pages/home_page.dart';
 import 'package:dino_diary/pages/login_or_register.dart';
 import 'package:dino_diary/pages/login_page.dart';
@@ -15,7 +16,7 @@ class AuthPage extends StatelessWidget {
         builder: (context, snapshot) {
           // usario logado
           if (snapshot.hasData) {
-            return HomePage();
+            return CalendarPage();
           }
           // usuario nao logado
           else {

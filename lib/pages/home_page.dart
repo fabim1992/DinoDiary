@@ -13,6 +13,8 @@ import 'package:dino_diary/widgets/card_diary.dart';
 
 final User user = FirebaseAuth.instance.currentUser!;
 
+  var date = DateTime.now;
+
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
 
@@ -46,6 +48,7 @@ class _HomePageState extends State<HomePage> {
       _selectedIndex = index;
     });
   }
+
 
   // sign user out
   void signUserOut() {
