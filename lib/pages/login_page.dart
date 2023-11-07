@@ -1,3 +1,8 @@
+import 'package:dino_diary/pages/auth_page.dart';
+import 'package:dino_diary/pages/calendar_page.dart';
+import 'package:dino_diary/pages/home_page.dart';
+import 'package:dino_diary/pages/login_or_register.dart';
+import 'package:dino_diary/pages/register_page.dart';
 import 'package:dino_diary/services/auth_service.dart';
 import 'package:dino_diary/widgets/login_with.dart';
 import 'package:dino_diary/widgets/my_button.dart';
@@ -55,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Color(0xFF9CE37D),
+          backgroundColor: Colors.deepPurple,
           title: Center(
               child: Text(
             message,
@@ -69,8 +74,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF8FC0A9),
-      
+      backgroundColor: const Color(0xFF126fc5),
       body: SafeArea(
         child: Center(
           child: ListView(
@@ -90,9 +94,9 @@ class _LoginPageState extends State<LoginPage> {
               //text
               const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
-                  'Bem-vindo(a) ao DinoDiary!',
+                  'Bem-vindo a DinoDiary',
                   style: TextStyle(
-                    color: Color(0xFFFAF3DD),
+                    color: Color(0xff04ca7f),
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -103,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
               //username
               MyTextField(
                 controller: usernameController,
-                hintText: 'Email',
+                hintText: 'Usuario',
                 obscureText: false,
               ),
 
@@ -123,7 +127,6 @@ class _LoginPageState extends State<LoginPage> {
                   MyTextBold(
                     isBold: false,
                     myText: 'Esqueceu a senha?',
-                    
                   ),
                 ],
               ),
@@ -136,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                 onTap: signUserIn,
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 50),
 
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -148,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 50),
               //todas as opcoes de login
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -181,17 +184,15 @@ class _LoginPageState extends State<LoginPage> {
                     child: const Text(
                       '  Registre-se aqui',
                       style: TextStyle(
-                        color: Colors.amberAccent,
+                        color: Color(0xffffc306),
                         //color: Color(0xff2822cd),
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ],
-              ),
-
-              //const SizedBox(height: 50),
+              )
             ],
           ),
         ),
