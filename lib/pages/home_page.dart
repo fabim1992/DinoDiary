@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2),
                       children: snapshot.data!.docs
-                          .map((note) => CardDiary(() {
+                          .map((note) => cardDiary(() {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(

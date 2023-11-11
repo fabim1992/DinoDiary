@@ -143,6 +143,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   MyTextBold(
                     isBold: false,
                     myText: 'Ou continue aqui',
+                    iscolorwhite: true,
                   ),
                 ],
               ),
@@ -173,6 +174,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   const MyTextBold(
                     isBold: false,
                     myText: 'Ja tem uma conta?',
+                    iscolorwhite: true,
                   ),
                   const SizedBox(width: 4),
                   GestureDetector(

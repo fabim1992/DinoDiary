@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 class MyTextBold extends StatelessWidget {
   final myText;
   final isBold;
+  final iscolorwhite;
   const MyTextBold({
     super.key,
     required this.myText,
     required this.isBold,
+    required this.iscolorwhite,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (isBold) {
+    if (isBold && iscolorwhite) {
       return Text(
         myText,
         style: const TextStyle(
@@ -20,11 +22,28 @@ class MyTextBold extends StatelessWidget {
           fontSize: 16,
         ),
       );
-    } else {
+    } else if (isBold == false && iscolorwhite) {
       return Text(
         myText,
         style: const TextStyle(
           color: Colors.white,
+          fontSize: 16,
+        ),
+      );
+    } else if (isBold && iscolorwhite == false) {
+      return Text(
+        myText,
+        style: const TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+        ),
+      );
+    } else {
+      return Text(
+        myText,
+        style: const TextStyle(
+          color: Colors.black,
           fontSize: 16,
         ),
       );

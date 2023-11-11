@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dino_diary/style/app_style.dart';
 import 'package:flutter/material.dart';
 
-Widget CardDiary(Function()? onTap, QueryDocumentSnapshot doc) {
+Widget cardDiary(Function()? onTap, QueryDocumentSnapshot doc) {
   return InkWell(
     onTap: onTap,
     child: Container(

@@ -1,3 +1,4 @@
+import 'package:dino_diary/pages/assist_cards.dart';
 import 'package:dino_diary/pages/calendar_page.dart';
 import 'package:dino_diary/pages/home_page.dart';
 import 'package:dino_diary/pages/login_or_register.dart';
@@ -16,7 +17,7 @@ class AuthPage extends StatelessWidget {
         builder: (context, snapshot) {
           // usario logado
           if (snapshot.hasData) {
-            return CalendarPage();
+            return AssistCard();
           }
           // usuario nao logado
           else {

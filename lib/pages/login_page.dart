@@ -4,6 +4,7 @@ import 'package:dino_diary/pages/home_page.dart';
 import 'package:dino_diary/pages/login_or_register.dart';
 import 'package:dino_diary/pages/register_page.dart';
 import 'package:dino_diary/services/auth_service.dart';
+import 'package:dino_diary/style/app_style.dart';
 import 'package:dino_diary/widgets/login_with.dart';
 import 'package:dino_diary/widgets/my_button.dart';
 import 'package:dino_diary/widgets/my_textbold.dart';
@@ -74,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF126fc5),
+      backgroundColor: AppStyle.mainColor,
       body: SafeArea(
         child: Center(
           child: ListView(
@@ -92,11 +93,11 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 50),
 
               //text
-              const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
                   'Bem-vindo a DinoDiary',
                   style: TextStyle(
-                    color: Color(0xff04ca7f),
+                    color: AppStyle.accentColor2,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -127,6 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                   MyTextBold(
                     isBold: false,
                     myText: 'Esqueceu a senha?',
+                    iscolorwhite: true,
                   ),
                 ],
               ),
@@ -147,6 +149,7 @@ class _LoginPageState extends State<LoginPage> {
                   MyTextBold(
                     isBold: false,
                     myText: 'Ou continue aqui',
+                    iscolorwhite: true,
                   ),
                 ],
               ),
@@ -177,6 +180,7 @@ class _LoginPageState extends State<LoginPage> {
                   const MyTextBold(
                     isBold: false,
                     myText: 'Sem Cadastro?',
+                    iscolorwhite: true,
                   ),
                   const SizedBox(width: 4),
                   GestureDetector(
