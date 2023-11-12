@@ -17,7 +17,7 @@ class AuthPage extends StatelessWidget {
         builder: (context, snapshot) {
           // usario logado
           if (snapshot.hasData) {
-            return AssistCard();
+            return CalendarPage();
           }
           // usuario nao logado
           else {

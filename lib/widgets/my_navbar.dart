@@ -1,31 +1,90 @@
-// import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-// import 'package:flutter/material.dart';
-// import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:dino_diary/pages/assist_cards.dart';
+import 'package:dino_diary/pages/calendar_page.dart';
+import 'package:dino_diary/pages/profile_user.dart';
+import 'package:dino_diary/style/app_style.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:flutter/material.dart';
 
-// class MyWidget extends StatefulWidget {
-//   const MyWidget({super.key});
+final PageController _pageController = PageController();
+int _selectedIndex = 0; // Index of the active tab
 
-//   @override
-//   State<MyWidget> createState() => _MyWidgetState();
-// }
+class MyNavbar extends StatefulWidget {
+  @override
+  State<MyNavbar> createState() => _MyNavbarState();
+}
 
-// class _MyWidgetState extends State<MyWidget> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return (
-//       backgroundColor: Colors.lightBlue,
-//       bottomNavigationBar: CurvedNavigationBar(
-//           animationDuration: Duration(milliseconds: 200),
-//           color: Colors.lightBlue,
-//           backgroundColor: Colors.grey,
-//           onTap: (index) {
-//             print(index);
-//           },
-//           items: [
-//             Icon(Icons.home),
-//             Icon(Icons.favorite),
-//             Icon(Icons.home),
-//           ]),
-//     );
-//   }
-// }
+class _MyNavbarState extends State<MyNavbar> {
+  final PageController _pageController = PageController();
+  int _selectedIndex = 0; // Index of the active tab
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: AppStyle.mainColor,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
+        child: GNav(
+          backgroundColor: AppStyle.mainColor,
+          color: Colors.white,
+          activeColor: Colors.black87,
+          tabBackgroundColor: AppStyle.accentColor2,
+          gap: 5,
+          selectedIndex: _selectedIndex,
+          padding: EdgeInsets.all(16),
+          tabs: [
+            GButton(
+              icon: Icons.account_circle,
+              text: 'Conta',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileUserPage()),
+                );
+              },
+            ),
+            GButton(
+              icon: Icons.auto_stories,
+              text: 'Calendário',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CalendarPage()),
+                );
+              },
+            ),
+            GButton(
+              icon: Icons.add_circle,
+              text: 'Novo Registro',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AssistCard()),
+                );
+              },
+            ),
+            GButton(
+              icon: Icons.pets,
+              text: 'Dino',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CalendarPage()),
+                );
+              },
+            ),
+            GButton(
+              icon: Icons.settings,
+              text: 'Configurações',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileUserPage()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

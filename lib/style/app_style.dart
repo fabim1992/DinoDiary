@@ -47,7 +47,7 @@ class AppStyle {
         Colors.brown.shade200,
         Colors.cyan.shade200,
         Colors.indigo.shade200,
-        Colors.lime.shade400,
+        Colors.lime.shade200,
         Colors.teal.shade400,
         Colors.deepOrange.shade200,
         Colors.grey.shade200

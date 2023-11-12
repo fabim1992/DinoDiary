@@ -1,6 +1,9 @@
 import 'package:dino_diary/pages/home_page.dart';
+import 'package:dino_diary/style/app_style.dart';
+import 'package:dino_diary/widgets/my_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({Key? key}) : super(key: key);
@@ -21,7 +24,7 @@ class _MyWidgetState extends State<CalendarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Wrap the content with a Scaffold
+      bottomNavigationBar: MyNavbar(),
       appBar: AppBar(
         title: Text('Calendar Page'),
       ),
