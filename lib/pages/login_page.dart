@@ -185,10 +185,10 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(width: 4),
                   GestureDetector(
                     onTap: widget.onTap,
-                    child: const Text(
+                    child: Text(
                       '  Registre-se aqui',
                       style: TextStyle(
-                        color: Color(0xffffc306),
+                        color: AppStyle.textcolor2,
                         //color: Color(0xff2822cd),
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

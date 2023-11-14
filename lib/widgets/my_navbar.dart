@@ -1,12 +1,14 @@
 import 'package:dino_diary/pages/assist_cards.dart';
 import 'package:dino_diary/pages/calendar_page.dart';
-import 'package:dino_diary/pages/profile_user.dart';
+import 'package:dino_diary/pages/home_page.dart';
+import 'package:dino_diary/pages/note_editor.dart';
+import 'package:dino_diary/pages/user_config.dart';
+import 'package:dino_diary/pages/user_profile.dart';
 import 'package:dino_diary/style/app_style.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:flutter/material.dart';
 
-final PageController _pageController = PageController();
-int _selectedIndex = 0; // Index of the active tab
+int currentIndex = 2;
 
 class MyNavbar extends StatefulWidget {
   @override
@@ -14,8 +16,12 @@ class MyNavbar extends StatefulWidget {
 }
 
 class _MyNavbarState extends State<MyNavbar> {
-  final PageController _pageController = PageController();
-  int _selectedIndex = 0; // Index of the active tab
+  void goToPage(index) {
+    setState(() {
+      currentIndex = index;
+      print(index);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +35,9 @@ class _MyNavbarState extends State<MyNavbar> {
           activeColor: Colors.black87,
           tabBackgroundColor: AppStyle.accentColor2,
           gap: 5,
-          selectedIndex: _selectedIndex,
           padding: EdgeInsets.all(16),
+          onTabChange: (index) => goToPage(index),
+          selectedIndex: currentIndex,
           tabs: [
             GButton(
               icon: Icons.account_circle,
@@ -38,7 +45,7 @@ class _MyNavbarState extends State<MyNavbar> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ProfileUserPage()),
+                  MaterialPageRoute(builder: (context) => UserProfilePage()),
                 );
               },
             ),
@@ -58,7 +65,7 @@ class _MyNavbarState extends State<MyNavbar> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AssistCard()),
+                  MaterialPageRoute(builder: (context) => NoteEditorPage()),
                 );
               },
             ),
@@ -68,7 +75,7 @@ class _MyNavbarState extends State<MyNavbar> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CalendarPage()),
+                  MaterialPageRoute(builder: (context) => AssistCard()),
                 );
               },
             ),
@@ -78,7 +85,7 @@ class _MyNavbarState extends State<MyNavbar> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ProfileUserPage()),
+                  MaterialPageRoute(builder: (context) => UserConfigPage()),
                 );
               },
             ),

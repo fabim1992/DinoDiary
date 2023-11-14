@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dino_diary/style/app_style.dart';
+import 'package:dino_diary/widgets/my_navbar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,7 @@ class _NoteEditorPageState extends State<NoteEditorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: MyNavbar(),
       backgroundColor: AppStyle.cardsColor[color_id],
       appBar: AppBar(
         backgroundColor: AppStyle.cardsColor[color_id],
