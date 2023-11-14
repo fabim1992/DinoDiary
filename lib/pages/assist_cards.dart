@@ -1,18 +1,17 @@
-import 'dart:html';
 import 'package:dino_diary/style/app_style.dart';
 import 'package:dino_diary/widgets/Card_user.dart';
 import 'package:dino_diary/widgets/my_textbold.dart';
 import 'package:flutter/material.dart';
 
 class AssistCard extends StatelessWidget {
-  AssistCard({super.key});
+  const AssistCard({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppStyle.mainColor,
       appBar: AppBar(
-        title: MyTextBold(
+        title: const MyTextBold(
           myText: 'SEUS PACIENTES',
           isBold: true,
           iscolorwhite: true,

@@ -28,14 +28,14 @@ class _NoteReaderPageState extends State<NoteReaderPage> {
               widget.doc["note_title"],
               style: AppStyle.mainTitle,
             ),
-            SizedBox(
+            const SizedBox(
               height: 4.0,
             ),
             Text(
               widget.doc["creation_date"],
               style: AppStyle.dateTitle,
             ),
-            SizedBox(
+            const SizedBox(
               height: 28.0,
             ),
             Text(

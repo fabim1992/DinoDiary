@@ -7,7 +7,7 @@ class UserConfigPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: const Center(
           child: Text(
         "Pagina Config",
         style: TextStyle(fontSize: 50),

@@ -159,7 +159,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       onTap: () => AuthService().signInWithGoogle(),
                       imagePath: 'lib/assets/images/google-logo.png'),
 
-                  SizedBox(width: 25),
+                  const SizedBox(width: 25),
 
                   //apple login
                   LoginWith(

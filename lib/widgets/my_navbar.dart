@@ -1,6 +1,5 @@
 import 'package:dino_diary/pages/assist_cards.dart';
 import 'package:dino_diary/pages/calendar_page.dart';
-import 'package:dino_diary/pages/home_page.dart';
 import 'package:dino_diary/pages/note_editor.dart';
 import 'package:dino_diary/pages/user_config.dart';
 import 'package:dino_diary/pages/user_profile.dart';

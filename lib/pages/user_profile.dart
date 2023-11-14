@@ -7,7 +7,7 @@ class UserProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: const Center(
           child: Text(
         "Pagina Profile",
         style: TextStyle(fontSize: 50),

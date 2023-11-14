@@ -2,7 +2,6 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dino_diary/style/app_style.dart';
 import 'package:dino_diary/widgets/my_navbar.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class NoteEditorPage extends StatefulWidget {

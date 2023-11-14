@@ -1,8 +1,3 @@
-import 'package:dino_diary/pages/auth_page.dart';
-import 'package:dino_diary/pages/calendar_page.dart';
-import 'package:dino_diary/pages/home_page.dart';
-import 'package:dino_diary/pages/login_or_register.dart';
-import 'package:dino_diary/pages/register_page.dart';
 import 'package:dino_diary/services/auth_service.dart';
 import 'package:dino_diary/style/app_style.dart';
 import 'package:dino_diary/widgets/login_with.dart';
@@ -164,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
                       onTap: () => AuthService().signInWithGoogle(),
                       imagePath: 'lib/assets/images/google-logo.png'),
 
-                  SizedBox(width: 25),
+                  const SizedBox(width: 25),
 
                   //apple login
                   LoginWith(

@@ -4,7 +4,6 @@ import 'package:dino_diary/pages/note_reader.dart';
 import 'package:dino_diary/style/app_style.dart';
 import 'package:dino_diary/widgets/card_diary.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -25,7 +24,7 @@ class HomePage extends StatelessWidget {
       backgroundColor: AppStyle.mainColor,
       appBar: AppBar(
           elevation: 0.0,
-          title: Text("Diario"),
+          title: const Text("Diario"),
           centerTitle: true,
           backgroundColor: AppStyle.mainColor,
           actions: [
@@ -45,7 +44,7 @@ class HomePage extends StatelessWidget {
                 fontSize: 22,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             Expanded(
