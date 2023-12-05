@@ -1,4 +1,5 @@
 import 'package:dino_diary/pages/home_page.dart';
+import 'package:dino_diary/widgets/my_appbar.dart';
 import 'package:dino_diary/widgets/my_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -23,9 +24,7 @@ class _MyWidgetState extends State<CalendarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: MyNavbar(),
-      appBar: AppBar(
-        title: Text('Calendar Page'),
-      ),
+      appBar: buildAppBar(context, 'Calendario'),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
