@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dino_diary/pages/note_editor.dart';
 import 'package:dino_diary/pages/note_reader.dart';
-import 'package:dino_diary/services/Singleton.dart';
 import 'package:dino_diary/style/app_style.dart';
 import 'package:dino_diary/widgets/card_diary.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,7 +11,6 @@ class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   final user = FirebaseAuth.instance.currentUser!;
-  var userS = Singleton();
   var date = DateTime.now;
 
   // sign user out

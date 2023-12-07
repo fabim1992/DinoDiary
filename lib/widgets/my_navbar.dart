@@ -1,7 +1,7 @@
 import 'package:dino_diary/pages/assist_cards.dart';
 import 'package:dino_diary/pages/calendar_page.dart';
+import 'package:dino_diary/pages/dino.dart';
 import 'package:dino_diary/pages/note_editor.dart';
-import 'package:dino_diary/pages/user_config.dart';
 import 'package:dino_diary/pages/user_profile.dart';
 import 'package:dino_diary/style/app_style.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -60,7 +60,7 @@ class _MyNavbarState extends State<MyNavbar> {
             ),
             GButton(
               icon: Icons.add_circle,
-              text: 'Novo Registro',
+              text: 'Registro',
               onPressed: () {
                 Navigator.push(
                   context,
@@ -74,17 +74,17 @@ class _MyNavbarState extends State<MyNavbar> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AssistCard()),
+                  MaterialPageRoute(builder: (context) => Dino()),
                 );
               },
             ),
             GButton(
-              icon: Icons.settings,
-              text: 'Configurações',
+              icon: Icons.people,
+              text: 'Amigos',
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => UserConfigPage()),
+                  MaterialPageRoute(builder: (context) => AssistCard()),
                 );
               },
             ),
