@@ -45,6 +45,7 @@ dependencies:
   http_interceptor: ^2.0.0-beta.7
   dio: ^5.1.2
   flutter_dotenv: ^5.0.2
+  popover: ^0.2.8+2
 
 dev_dependencies:
   flutter_test:
@@ -71,7 +72,13 @@ flutter:
   assets:
     - lib/assets/images/apple-logo.png
     - lib/assets/images/google-logo.png
+    - lib/assets/images/cute-dino.png
     - lib/assets/images/dinosaur-book.png
+    - lib/assets/images/dino-quest.png
+    - lib/assets/images/dino-popcorn.png
+    - lib/assets/images/dino-potion.png
+    - lib/assets/images/dino-shop.png
+    - lib/assets/images/dino-gold.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

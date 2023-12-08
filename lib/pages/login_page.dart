@@ -78,9 +78,10 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 50),
 
               //logo
-              const Icon(
-                Icons.lock,
-                size: 100,
+              Image.asset(
+                'lib/assets/images/dinosaur-book.png', // Replace with the path to your image asset
+                width: 100,
+                height: 100,
               ),
 
               //Navbar
