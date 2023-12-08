@@ -53,6 +53,7 @@ class _MyProfileTextFieldState extends State<MyProfileTextField> {
               ),
             ),
             maxLines: widget.maxLines,
+            onChanged: widget.onChanged,
           ),
         ],
       );

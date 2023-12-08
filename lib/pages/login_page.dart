@@ -79,16 +79,13 @@ class _LoginPageState extends State<LoginPage> {
 
               //logo
               Image.asset(
-                'lib/assets/images/dinosaur-book.png', // Replace with the path to your image asset
+                'lib/assets/images/dinosaur-book.png',
                 width: 100,
                 height: 100,
               ),
 
-              //Navbar
-
               const SizedBox(height: 50),
 
-              //text
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
                   'Bem-vindo a DinoDiary',

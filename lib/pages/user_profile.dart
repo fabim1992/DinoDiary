@@ -17,7 +17,7 @@ class UserProfilePage extends StatefulWidget {
 class _UserProfilePageState extends State<UserProfilePage> {
   @override
   Widget build(BuildContext context) {
-    final user = UserPreferences.myUser;
+    final user = UserPreferences.getUser();
     return Scaffold(
       appBar: buildAppBar(context, "Perfil"),
       bottomNavigationBar: MyNavbar(),
@@ -30,10 +30,11 @@ class _UserProfilePageState extends State<UserProfilePage> {
           ),
           MyProfile(
               imagePath: user.imagePath,
-              onClicked: () {
-                Navigator.of(context).push(
+              onClicked: () async {
+                await Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => UserEditProfile()),
                 );
+                setState(() {});
               }),
           const SizedBox(
             height: 24,
