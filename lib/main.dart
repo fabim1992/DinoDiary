@@ -1,14 +1,17 @@
+import 'package:dino_diary/common/http_helper.dart';
 import 'package:dino_diary/pages/auth_page.dart';
-import 'package:dino_diary/pages/home_page.dart';
-import 'package:dino_diary/pages/user_editprofile.dart';
-import 'package:dino_diary/pages/user_profile.dart';
-import 'package:dino_diary/services/mock_user.dart';
 import 'package:flutter/material.dart';
 //firebase imports
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'firebase_options.dart';
 
-void main() async {
+Future<void> main() async {
+  // import .env
+  await dotenv.load(fileName: ".env");
+  // Initialize HTTP handler
+  initDio();
+
   //firebase comandos
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -30,7 +33,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue.shade300,
         dividerColor: Colors.black38,
       ),
-      home: AuthPage(),
+      home: const AuthPage(),
       // home: UserProfilePage(),
     );
   }
