@@ -25,9 +25,9 @@ class AuthService {
     }, onError: (error, handler) async {
       // Check for token expired error
       log(error.toString(), name: 'onError');
-      // if (error.response?.statusCode == 401) {
-      //   refreshAccessToken();
-      // }
+      if (error.response?.statusCode == 401) {
+        await storage.delete(key: ApiConstants.accessTokenKey);
+      }
 
       return handler.next(error);
     }));

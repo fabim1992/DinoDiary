@@ -79,6 +79,7 @@ flutter:
     - lib/assets/images/dino-potion.png
     - lib/assets/images/dino-shop.png
     - lib/assets/images/dino-gold.png
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

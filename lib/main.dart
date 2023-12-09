@@ -11,6 +11,7 @@ Future<void> main() async {
   await dotenv.load(fileName: ".env");
   // Initialize HTTP handler
   initDio();
+  initServices();
 
   //firebase comandos
   WidgetsFlutterBinding.ensureInitialized();
