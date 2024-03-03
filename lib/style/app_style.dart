@@ -4,12 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppStyle {
   static Color mainColor = Color(0xff1d6d86);
-  static Color mainColor2 = Color(0xff4ebeef);
-  static Color accentColor = Color(0xff4eefa6);
-  static Color accentColor2 = Color(0xff04ca7f);
-  static Color textcolor = Color(0xff866a1d);
-  static Color textcolor2 = Color(0xffffc306);
-  static Color bgColor = Color(0xFFe2e2ff);
+  static Color mainColor2 = Color(0xff70A9A1);
+  static Color accentColor = Color(0xff9EC1A3);
+  static Color accentColor2 = Color(0xffCFE0C3);
+  static Color textcolor = Color(0xff1F363D);
+  static Color textcolor2 = Color.fromARGB(255, 255, 249, 193);
+  static Color bgColor = Color.fromARGB(255, 255, 249, 193);
 
   static List<Color> cardsColor = [
     Colors.purple.shade200,
@@ -21,11 +21,9 @@ class AppStyle {
     Colors.blue.shade200,
     Colors.blueGrey.shade200,
     Colors.amber.shade300,
-    Colors.brown.shade200,
     Colors.cyan.shade200,
     Colors.indigo.shade200,
     Colors.lime.shade400,
-    Colors.teal.shade400,
     Colors.deepOrange.shade200,
     Colors.grey.shade200
   ];
@@ -43,11 +41,9 @@ class AppStyle {
         Colors.blue.shade200,
         Colors.blueGrey.shade200,
         Colors.amber.shade300,
-        Colors.brown.shade200,
         Colors.cyan.shade200,
         Colors.indigo.shade200,
         Colors.lime.shade200,
-        Colors.teal.shade400,
         Colors.deepOrange.shade200,
         Colors.grey.shade200
       ];
@@ -57,7 +53,7 @@ class AppStyle {
     final int index = Random().nextInt(cardsColor.length);
 
     // Remove and return the color at the selected index
-    return cardsColor.removeAt(index);
+    return cardsColor[(index)];
   }
 
   static TextStyle mainTitle =
