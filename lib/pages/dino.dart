@@ -1,6 +1,7 @@
 import 'package:dino_diary/widgets/my_appbar.dart';
 import 'package:dino_diary/widgets/my_navbar.dart';
 import 'package:flutter/material.dart';
+import 'package:dino_diary/style/app_style.dart';
 
 class Dino extends StatefulWidget {
   const Dino({super.key});
@@ -8,10 +9,11 @@ class Dino extends StatefulWidget {
   @override
   State<Dino> createState() => _DinoState();
 }
-
+final TextEditingController _nameController = TextEditingController();
 class _DinoState extends State<Dino> {
-  List<Widget?> gridItems = List.generate(40, (index) {
-    if (index == 17) {
+  
+  List<Widget?> gridItems = List.generate(35, (index) {
+    if (index == 12) {
       return GestureDetector(
         onTap: () {
           print("Clicked on cute-dino.png");
@@ -28,22 +30,31 @@ class _DinoState extends State<Dino> {
         },
         child: Icon(
           Icons.photo_camera,
-          color: Colors.blue,
+          color: AppStyle.accentColor2,
           size: 40.0,
         ),
       );
     } else if (index == 2) {
       return Container(
         color: Colors.transparent,
-        margin: EdgeInsets.all(5),
-        child: Center(
-          child: Text(
-            "Dino",
-            style: TextStyle(
-              fontSize: 18,
+        //margin: const EdgeInsets.all(5),
+        child:  Center(
+          child: TextField(
+            maxLength: 5,
+            controller: _nameController,
+            decoration: const InputDecoration(
+              hintText: "Dino",
+              
+            ),
+            style: const TextStyle(
+              fontSize: 22,
               fontWeight: FontWeight.bold,
             ),
+            onChanged:(value) {
+              _nameController.text;
+            },
           ),
+          
         ),
       );
     } else if (index == 4) {
@@ -53,11 +64,11 @@ class _DinoState extends State<Dino> {
         },
         child: Icon(
           Icons.help,
-          color: Colors.blue,
+          color: AppStyle.accentColor2,
           size: 40.0,
         ),
       );
-    } else if (index == 27) {
+    } else if (index == 22) {
       return GestureDetector(
         onTap: () {
           print("Clicked on dino-quest.png");
@@ -67,7 +78,7 @@ class _DinoState extends State<Dino> {
           fit: BoxFit.cover,
         ),
       );
-    } else if (index == 31) {
+    } else if (index == 26) {
       return GestureDetector(
         onTap: () {
           print("Clicked on dino-popcorn.png");
@@ -77,7 +88,7 @@ class _DinoState extends State<Dino> {
           fit: BoxFit.cover,
         ),
       );
-    } else if (index == 33) {
+    } else if (index == 28) {
       return GestureDetector(
         onTap: () {
           print("Clicked on dino-shop.png");
@@ -87,7 +98,7 @@ class _DinoState extends State<Dino> {
           fit: BoxFit.cover,
         ),
       );
-    } else if (index == 37) {
+    } else if (index == 32) {
       return GestureDetector(
         onTap: () {
           print("Clicked on dino-potion.png");
@@ -100,7 +111,7 @@ class _DinoState extends State<Dino> {
     } else {
       return Container(
         color: Colors.transparent,
-        margin: EdgeInsets.all(5),
+        margin: const EdgeInsets.all(5),
       );
     }
   });
@@ -109,16 +120,18 @@ class _DinoState extends State<Dino> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context, "Dino"),
+      backgroundColor: AppStyle.mainColor2,
       body: GridView.builder(
         itemCount: gridItems.length,
         gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5),
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5),
         itemBuilder: (context, index) {
           // Check if the item is null, and return an empty container if it is
           return gridItems[index] ?? Container();
         },
       ),
-      bottomNavigationBar: MyNavbar(),
+      
+      bottomNavigationBar: const MyNavbar(),
     );
   }
 }

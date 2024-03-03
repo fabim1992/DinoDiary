@@ -23,7 +23,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
       bottomNavigationBar: MyNavbar(),
       backgroundColor: AppStyle.mainColor2,
       body: ListView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: [
           const SizedBox(
             height: 24,
@@ -46,7 +46,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
           InfoBar(),
           const SizedBox(
             height: 48,
-          ),
+          )
         ],
       ),
     );
@@ -63,7 +63,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
           ),
           Text(
             user.email,
-            style: TextStyle(color: Colors.grey),
+            style: TextStyle(color: Colors.black),
           ),
         ],
       );

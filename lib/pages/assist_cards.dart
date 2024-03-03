@@ -1,5 +1,6 @@
 import 'package:dino_diary/style/app_style.dart';
-import 'package:dino_diary/widgets/Card_user.dart';
+import 'package:dino_diary/widgets/card_user.dart';
+import 'package:dino_diary/widgets/my_appbar.dart';
 import 'package:dino_diary/widgets/my_textbold.dart';
 import 'package:flutter/material.dart';
 import 'package:dino_diary/widgets/my_navbar.dart';
@@ -12,15 +13,7 @@ class AssistCard extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: MyNavbar(),
       backgroundColor: AppStyle.mainColor,
-      appBar: AppBar(
-        title: const MyTextBold(
-          myText: 'AMIGOS',
-          isBold: true,
-          iscolorwhite: true,
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.black87,
-      ),
+      appBar: buildAppBar(context, "Amigos"),
       body: ListView(
         children: [
           Column(

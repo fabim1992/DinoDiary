@@ -30,7 +30,7 @@ class InfoBar extends StatelessWidget {
               value,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
-            SizedBox(
+            const SizedBox(
               height: 2,
             ),
             Text(

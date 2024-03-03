@@ -183,13 +183,15 @@ class _LoginPageState extends State<LoginPage> {
                       style: TextStyle(
                         color: AppStyle.textcolor2,
                         //color: Color(0xff2822cd),
-                        fontSize: 16,
+                        fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ],
-              )
+              ),
+              
+              const SizedBox(height: 30)
             ],
           ),
         ),

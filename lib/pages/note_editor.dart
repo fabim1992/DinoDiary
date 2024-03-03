@@ -14,10 +14,10 @@ class NoteEditorPage extends StatefulWidget {
 }
 
 class _NoteEditorPageState extends State<NoteEditorPage> {
-  int color_id = Random().nextInt(AppStyle.cardsColor.length);
+  int colorId = Random().nextInt(AppStyle.cardsColor.length);
   DateTime now = DateTime.now();
-  TextEditingController _titleController = TextEditingController();
-  TextEditingController _mainController = TextEditingController();
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _mainController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class _NoteEditorPageState extends State<NoteEditorPage> {
 
     return Scaffold(
       bottomNavigationBar: MyNavbar(),
-      backgroundColor: AppStyle.cardsColor[color_id],
+      backgroundColor: AppStyle.cardsColor[colorId],
       appBar: buildAppBar(context, "Adicionar novo registro"),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -35,13 +35,13 @@ class _NoteEditorPageState extends State<NoteEditorPage> {
           children: [
             TextField(
               controller: _titleController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 hintText: 'Titulo do registro',
               ),
               style: AppStyle.mainTitle,
             ),
-            SizedBox(
+            const SizedBox(
               height: 8.0,
             ),
             Row(
@@ -57,14 +57,14 @@ class _NoteEditorPageState extends State<NoteEditorPage> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10.0,
             ),
             TextField(
               controller: _mainController,
               keyboardType: TextInputType.multiline,
               maxLines: null,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 hintText: 'Escreva o registro',
               ),
@@ -74,57 +74,57 @@ class _NoteEditorPageState extends State<NoteEditorPage> {
         ),
       ),
       floatingActionButton: Container(
-        margin: EdgeInsets.only(left: 30),
+        margin: const EdgeInsets.only(left: 30),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ElevatedButton(
               onPressed: () {},
-              child: Icon(Icons.edit),
               style: ButtonStyle(
-                fixedSize: MaterialStateProperty.all(Size(50.0, 50.0)),
+                fixedSize: MaterialStateProperty.all(const Size(50.0, 50.0)),
                 backgroundColor:
-                    MaterialStateProperty.all(AppStyle.accentColor2),
+                    MaterialStateProperty.all(AppStyle.accentColor),
               ),
+              child: const Icon(Icons.edit),
             ),
-            SizedBox(width: 8.0),
+            const SizedBox(width: 8.0),
             ElevatedButton(
               onPressed: () {},
-              child: Icon(Icons.palette),
               style: ButtonStyle(
-                fixedSize: MaterialStateProperty.all(Size(50.0, 50.0)),
+                fixedSize: MaterialStateProperty.all(const Size(50.0, 50.0)),
                 backgroundColor:
-                    MaterialStateProperty.all(AppStyle.accentColor2),
+                    MaterialStateProperty.all(AppStyle.accentColor),
               ),
+              child: const Icon(Icons.palette),
             ),
-            SizedBox(width: 8.0),
+            const SizedBox(width: 8.0),
             ElevatedButton(
               onPressed: () {},
-              child: Icon(Icons.text_format),
               style: ButtonStyle(
-                fixedSize: MaterialStateProperty.all(Size(50.0, 50.0)),
+                fixedSize: MaterialStateProperty.all(const Size(50.0, 50.0)),
                 backgroundColor:
-                    MaterialStateProperty.all(AppStyle.accentColor2),
+                    MaterialStateProperty.all(AppStyle.accentColor),
               ),
+              child: const Icon(Icons.text_format),
             ),
-            SizedBox(width: 16.0),
+            const SizedBox(width: 16.0),
             FloatingActionButton(
-              backgroundColor: AppStyle.accentColor2,
+              backgroundColor: AppStyle.accentColor,
               onPressed: () async {
                 FirebaseFirestore.instance.collection("Notes").add({
                   "note_title": _titleController.text,
                   "creation_date": date,
                   "note_content": _mainController.text,
-                  "color_id": color_id
+                  "color_id": colorId
                 }).then((value) {
                   print(value.id);
-                  Navigator.pop(context);
+                  Navigator.maybePop(context);
                 }).catchError(
                   (error) =>
                       print("Falha ao adicionar registro por causa de $error"),
                 );
               },
-              child: Icon(Icons.save),
+              child: const Icon(Icons.save),
             ),
           ],
         ),
