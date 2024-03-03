@@ -19,7 +19,7 @@ class MyTextBold extends StatelessWidget {
         style: const TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
-          fontSize: 16,
+          fontSize: 17,
         ),
       );
     } else if (isBold == false && iscolorwhite) {
@@ -27,7 +27,7 @@ class MyTextBold extends StatelessWidget {
         myText,
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 16,
+          fontSize: 17,
         ),
       );
     } else if (isBold && iscolorwhite == false) {
@@ -36,7 +36,7 @@ class MyTextBold extends StatelessWidget {
         style: const TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.bold,
-          fontSize: 16,
+          fontSize: 17,
         ),
       );
     } else {
@@ -44,7 +44,7 @@ class MyTextBold extends StatelessWidget {
         myText,
         style: const TextStyle(
           color: Colors.black,
-          fontSize: 16,
+          fontSize: 17,
         ),
       );
     }
