@@ -11,24 +11,25 @@ class NoteReaderPage extends StatefulWidget {
 }
 
 class _NoteReaderPageState extends State<NoteReaderPage> {
-  TextEditingController _titleController = TextEditingController();
-  TextEditingController _mainController = TextEditingController();
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _mainController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    int color_id = widget.doc['color_id'];
+    int colorId = widget.doc['color_id'];
     return Scaffold(
-      backgroundColor: AppStyle.cardsColor[color_id],
+      backgroundColor: AppStyle.cardsColor[colorId],
       appBar: AppBar(
-        backgroundColor: AppStyle.cardsColor[color_id],
+        backgroundColor: AppStyle.cardsColor[colorId],
         elevation: 0.0,
       ),
       body: Padding(
-        padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              widget.doc["note_title"],
+            TextField(
+              controller: _titleController,
+              decoration: InputDecoration(hintText: widget.doc["note_title"]),
               style: AppStyle.mainTitle,
             ),
             const SizedBox(
@@ -50,11 +51,17 @@ class _NoteReaderPageState extends State<NoteReaderPage> {
                   ),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                constraints: BoxConstraints.expand(),
+                constraints: const BoxConstraints.expand(),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    widget.doc["note_content"],
+                  child: TextField(
+                    controller: _mainController,
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: widget.doc["note_content"],
+                    ),
                     style: AppStyle.mainContent,
                   ),
                 ),
@@ -63,20 +70,47 @@ class _NoteReaderPageState extends State<NoteReaderPage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: AppStyle.accentColor,
-        onPressed: () async {
-          FirebaseFirestore.instance.collection("Notes").doc().update({
-            "note_title": _titleController.text,
-            "note_content": _mainController.text,
-            "color_id": color_id
-          }).then((value) {
-            Navigator.pop(context);
-          }).catchError((error) =>
-              print("Falha ao adicionar registro por causa de $error"));
-        },
-        child: Icon(Icons.save),
-      ),
+      floatingActionButton: Container(
+          margin: const EdgeInsets.only(left: 30),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                onPressed: () async {
+                  FirebaseFirestore.instance.collection("Notes").doc(widget.doc.id.toString()).update({
+                    "note_title": _titleController.text,
+                    "note_content": _mainController.text,
+                    "color_id": colorId
+                  }).then((value) {
+                    Navigator.pop(context);
+                  }).catchError((error) =>
+                      print("Falha ao atualizar registro por causa de $error"));
+                },
+                style: ButtonStyle(
+                  fixedSize: MaterialStateProperty.all(const Size(50.0, 50.0)),
+                  backgroundColor:
+                      MaterialStateProperty.all(AppStyle.accentColor),
+                ),
+                child: const Icon(Icons.save),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  FirebaseFirestore.instance.collection("Notes").doc(widget.doc.id.toString()).delete().then((value) {
+                    Navigator.pop(context);
+                  }).catchError((error) =>
+                      print("Falha ao atualizar registro por causa de $error"));
+                },
+                style: ButtonStyle(
+                  fixedSize: MaterialStateProperty.all(const Size(50.0, 50.0)),
+                  backgroundColor:
+                      MaterialStateProperty.all(AppStyle.accentColor),
+                ),
+                child: const Icon(Icons.delete),
+              ),
+            ],
+          )
+          
+          ),
     );
   }
 }

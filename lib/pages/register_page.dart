@@ -185,7 +185,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       style: TextStyle(
                         color: AppStyle.textcolor2,
                         //color: Color(0xff2822cd),
-                        fontSize: 18,
+                        fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

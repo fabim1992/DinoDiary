@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 int currentIndex = 2;
 
 class MyNavbar extends StatefulWidget {
+  const MyNavbar({super.key});
+
   @override
   State<MyNavbar> createState() => _MyNavbarState();
 }
@@ -34,7 +36,7 @@ class _MyNavbarState extends State<MyNavbar> {
           activeColor: Colors.black87,
           tabBackgroundColor: AppStyle.accentColor2,
           gap: 5,
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           onTabChange: (index) => goToPage(index),
           selectedIndex: currentIndex,
           tabs: [
@@ -49,7 +51,7 @@ class _MyNavbarState extends State<MyNavbar> {
               },
             ),
             GButton(
-              icon: Icons.auto_stories,
+              icon: Icons.calendar_month,
               text: 'Calendário',
               onPressed: () {
                 Navigator.push(
