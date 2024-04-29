@@ -3,13 +3,39 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppStyle {
-  static Color mainColor = Color(0xff1d6d86);
-  static Color mainColor2 = Color(0xff70A9A1);
-  static Color accentColor = Color(0xff9EC1A3);
-  static Color accentColor2 = Color(0xffCFE0C3);
-  static Color textcolor = Color(0xff1F363D);
-  static Color textcolor2 = Color.fromARGB(255, 255, 249, 193);
-  static Color bgColor = Color.fromARGB(255, 255, 249, 193);
+  //static bool appTheme = true;
+
+
+  static Color mainColor = const Color(0xff1d6d86);
+  static Color mainColor2 = const Color(0xff70A9A1);
+  static Color accentColor = const Color(0xff9EC1A3);
+  static Color accentColor2 = const Color(0xffCFE0C3);
+  static Color textcolor = const Color(0xff1F363D);
+  static Color textcolor2 = const Color.fromARGB(255, 255, 249, 193);
+  //static Color bgColor = Color.fromARGB(255, 255, 249, 193);
+
+  
+
+  static List<Color> darkMode = [
+    
+    const Color(0xff370031),
+    const Color(0xff6E2446),
+    const Color.fromARGB(255, 161, 51, 103),
+    const Color(0xffCE8964),
+    const Color.fromARGB(255, 255, 242, 97),
+    const Color.fromARGB(255, 250, 255, 185),
+    //Color(0xff0B0033),
+  ];
+
+  static List<Color> lightMode = [
+    const Color(0xff1d6d86),
+    const Color(0xff70A9A1),
+    const Color(0xff9EC1A3),
+    const Color(0xffCFE0C3),
+    const Color(0xff1F363D),
+    const Color.fromARGB(255, 255, 249, 193),
+    //Color.fromARGB(255, 255, 249, 193)
+  ];
 
   static List<Color> cardsColor = [
     Colors.purple.shade200,
