@@ -1,10 +1,12 @@
 import 'dart:io';
+import 'package:dino_diary/pages/auth_page.dart';
 import 'package:dino_diary/services/mock_user.dart';
 import 'package:dino_diary/style/app_style.dart';
 import 'package:dino_diary/widgets/my_appbar.dart';
 import 'package:dino_diary/widgets/my_button.dart';
 import 'package:dino_diary/widgets/my_profile.dart';
 import 'package:dino_diary/widgets/my_profiletextfield.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
@@ -20,6 +22,13 @@ class UserEditProfile extends StatefulWidget {
 
 class _UserEditProfileState extends State<UserEditProfile> {
   MockUser user = UserPreferences.myUser;
+  void signUserOut() {
+    FirebaseAuth.instance.signOut();
+  }
+
+  void deleteUser() {
+    FirebaseAuth.instance.currentUser!.delete();
+  }
 
   // late MockUser user;
   //
@@ -79,7 +88,94 @@ class _UserEditProfileState extends State<UserEditProfile> {
                   UserPreferences.setUser(user);
                   Navigator.of(context).pop();
                 },
-                text: 'Salvar')
+                text: 'Salvar'),
+            const SizedBox(
+              height: 36,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    signUserOut();
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (context) => AuthPage()),
+                        (route) => false);
+                  },
+                  style: ButtonStyle(
+                    fixedSize:
+                        MaterialStateProperty.all(const Size(80.0, 80.0)),
+                    backgroundColor:
+                        MaterialStateProperty.all(AppStyle.accentColor),
+                  ),
+                  child: const Icon(Icons.logout_rounded),
+                ),
+                const SizedBox(width: 8.0),
+                ElevatedButton(
+                  onPressed: () {
+                    showDialog<void>(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          backgroundColor: Color.fromARGB(255, 104, 255, 34),
+                          title: const Text(
+                            'Confirmar',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          content: const SingleChildScrollView(
+                            child: Column(
+                              children: <Widget>[
+                                Text(
+                                  '! Esta ação é irreversível !',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                Text(
+                                  'Quer mesmo deletar sua conta?',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text(
+                                'Confirm',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              onPressed: () async {
+                                deleteUser();
+                                FirebaseAuth.instance.signOut();
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                        builder: (context) => AuthPage()),
+                                    (route) => false);
+                              },
+                            ),
+                            TextButton(
+                              child: const Text(
+                                'Cancel',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  style: ButtonStyle(
+                    fixedSize:
+                        MaterialStateProperty.all(const Size(80.0, 80.0)),
+                    backgroundColor:
+                        MaterialStateProperty.all(AppStyle.accentColor),
+                  ),
+                  child: const Icon(Icons.delete_forever_rounded),
+                )
+              ],
+            )
           ],
         ),
       );

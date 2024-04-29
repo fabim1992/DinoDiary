@@ -46,7 +46,8 @@ class _DinoState extends State<Dino> {
               hintText: "Dino",
               
             ),
-            style: const TextStyle(
+            style: TextStyle(
+              color: AppStyle.textcolor,
               fontSize: 22,
               fontWeight: FontWeight.bold,
             ),

@@ -8,14 +8,21 @@ class NoteReaderPage extends StatefulWidget {
   QueryDocumentSnapshot doc;
   @override
   State<NoteReaderPage> createState() => _NoteReaderPageState();
+  
 }
 
 class _NoteReaderPageState extends State<NoteReaderPage> {
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _mainController = TextEditingController();
+  
+  //final TextEditingController _titleController = TextEditingController();
+  //final TextEditingController _mainController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     int colorId = widget.doc['color_id'];
+    String title =  widget.doc["note_title"];
+    String text =  widget.doc["note_content"];
+    final TextEditingController _titleController = TextEditingController(text:title);
+    final TextEditingController _mainController = TextEditingController(text:text);
     return Scaffold(
       backgroundColor: AppStyle.cardsColor[colorId],
       appBar: AppBar(
@@ -31,6 +38,7 @@ class _NoteReaderPageState extends State<NoteReaderPage> {
               controller: _titleController,
               decoration: InputDecoration(hintText: widget.doc["note_title"]),
               style: AppStyle.mainTitle,
+              
             ),
             const SizedBox(
               height: 4.0,
@@ -55,7 +63,9 @@ class _NoteReaderPageState extends State<NoteReaderPage> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
+                    
                     controller: _mainController,
+                    
                     keyboardType: TextInputType.multiline,
                     maxLines: null,
                     decoration: InputDecoration(
@@ -63,6 +73,7 @@ class _NoteReaderPageState extends State<NoteReaderPage> {
                       hintText: widget.doc["note_content"],
                     ),
                     style: AppStyle.mainContent,
+                    //initialValue: widget.doc["note_content"]!,
                   ),
                 ),
               ),
@@ -77,14 +88,17 @@ class _NoteReaderPageState extends State<NoteReaderPage> {
             children: [
               ElevatedButton(
                 onPressed: () async {
-                  FirebaseFirestore.instance.collection("Notes").doc(widget.doc.id.toString()).update({
+                  FirebaseFirestore.instance
+                      .collection("Notes")
+                      .doc(widget.doc.id.toString())
+                      .update({
                     "note_title": _titleController.text,
                     "note_content": _mainController.text,
                     "color_id": colorId
                   }).then((value) {
                     Navigator.pop(context);
-                  }).catchError((error) =>
-                      print("Falha ao atualizar registro por causa de $error"));
+                  }).catchError((error) => print(
+                          "Falha ao atualizar registro por causa de $error"));
                 },
                 style: ButtonStyle(
                   fixedSize: MaterialStateProperty.all(const Size(50.0, 50.0)),
@@ -95,10 +109,14 @@ class _NoteReaderPageState extends State<NoteReaderPage> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  FirebaseFirestore.instance.collection("Notes").doc(widget.doc.id.toString()).delete().then((value) {
+                  FirebaseFirestore.instance
+                      .collection("Notes")
+                      .doc(widget.doc.id.toString())
+                      .delete()
+                      .then((value) {
                     Navigator.pop(context);
-                  }).catchError((error) =>
-                      print("Falha ao atualizar registro por causa de $error"));
+                  }).catchError((error) => print(
+                          "Falha ao atualizar registro por causa de $error"));
                 },
                 style: ButtonStyle(
                   fixedSize: MaterialStateProperty.all(const Size(50.0, 50.0)),
@@ -108,9 +126,7 @@ class _NoteReaderPageState extends State<NoteReaderPage> {
                 child: const Icon(Icons.delete),
               ),
             ],
-          )
-          
-          ),
+          )),
     );
   }
 }
