@@ -1,3 +1,4 @@
+import 'package:dino_diary/style/app_style.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -42,15 +43,20 @@ class _MyProfileTextFieldState extends State<MyProfileTextField> {
         children: [
           Text(
             widget.label,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: AppStyle.textcolor),
           ),
           const SizedBox(height: 8),
           TextField(
             controller: controller,
             decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: BorderSide(color: AppStyle.textcolor2, width: 2)),
+              fillColor: Color(0xFFFAF3DD),
+              filled: true,
             ),
             maxLines: widget.maxLines,
             onChanged: widget.onChanged,
