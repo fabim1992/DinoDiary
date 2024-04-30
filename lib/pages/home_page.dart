@@ -4,6 +4,7 @@ import 'package:dino_diary/pages/note_reader.dart';
 import 'package:dino_diary/style/app_style.dart';
 import 'package:dino_diary/widgets/card_diary.dart';
 import 'package:dino_diary/widgets/my_appbar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -22,7 +23,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppStyle.mainColor,
-      appBar: buildAppBar(context, "Registros Recentes"),
+      appBar: buildAppBar(context, "Histórico Completo"),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -32,7 +33,7 @@ class HomePage extends StatelessWidget {
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
                 stream:
-                    FirebaseFirestore.instance.collection("Notes").snapshots(),
+                    FirebaseFirestore.instance.collection("Notes").where("user_id", isEqualTo: FirebaseAuth.instance.currentUser!.uid.toString()).snapshots(),
                 builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());

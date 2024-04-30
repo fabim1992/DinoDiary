@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dino_diary/style/app_style.dart';
 import 'package:dino_diary/widgets/my_appbar.dart';
 import 'package:dino_diary/widgets/my_navbar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -21,7 +22,8 @@ class _NoteEditorPageState extends State<NoteEditorPage> {
 
   @override
   Widget build(BuildContext context) {
-    String date = DateFormat('yyyy-MM-dd HH:mm').format(now);
+    String date = DateFormat('yyyy-MM-dd').format(now);
+    
     String dayOfWeek = DateFormat('EEEE').format(now);
 
     return Scaffold(
@@ -115,7 +117,8 @@ class _NoteEditorPageState extends State<NoteEditorPage> {
                   "note_title": _titleController.text,
                   "creation_date": date,
                   "note_content": _mainController.text,
-                  "color_id": colorId
+                  "color_id": colorId,
+                  "user_id": FirebaseAuth.instance.currentUser!.uid.toString()
                 }).then((value) {
                   print(value.id);
                   Navigator.maybePop(context);

@@ -22,7 +22,7 @@ class AssistCard extends StatelessWidget {
                 userName: 'Fabio',
               ),
               CardUser(
-                userName: 'LuCas',
+                userName: 'Lucas',
               ),
               CardUser(
                 userName: 'Lara',

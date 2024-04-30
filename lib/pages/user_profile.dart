@@ -56,14 +56,14 @@ class _UserProfilePageState extends State<UserProfilePage> {
         children: [
           Text(
             user.name,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+            style: TextStyle(color: AppStyle.textcolor, fontWeight: FontWeight.bold, fontSize: 24),
           ),
           const SizedBox(
             height: 4,
           ),
           Text(
             user.email,
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: AppStyle.textcolor2),
           ),
         ],
       );

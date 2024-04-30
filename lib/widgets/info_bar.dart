@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dino_diary/style/app_style.dart';
 
 class InfoBar extends StatelessWidget {
   const InfoBar({super.key});
@@ -28,14 +29,14 @@ class InfoBar extends StatelessWidget {
           children: <Widget>[
             Text(
               value,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: TextStyle(color: AppStyle.textcolor,fontWeight: FontWeight.bold, fontSize: 20),
             ),
             const SizedBox(
               height: 2,
             ),
             Text(
               text,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(color: AppStyle.textcolor,fontWeight: FontWeight.bold),
             ),
           ],
         ),
