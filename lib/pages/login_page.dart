@@ -1,4 +1,5 @@
 import 'package:dino_diary/services/auth_service.dart';
+import 'package:dino_diary/style/app_style.dart';
 import 'package:dino_diary/widgets/login_with.dart';
 import 'package:dino_diary/widgets/my_button.dart';
 import 'package:dino_diary/widgets/my_textbold.dart';
@@ -55,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Color(0xFF9CE37D),
+          backgroundColor: Colors.deepPurple,
           title: Center(
               child: Text(
             message,
@@ -69,8 +70,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF8FC0A9),
-      
+      backgroundColor: AppStyle.mainColor,
       body: SafeArea(
         child: Center(
           child: ListView(
@@ -78,21 +78,19 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 50),
 
               //logo
-              const Icon(
-                Icons.lock,
-                size: 100,
+              Image.asset(
+                'lib/assets/images/dinosaur-book.png',
+                width: 100,
+                height: 100,
               ),
-
-              //Navbar
 
               const SizedBox(height: 50),
 
-              //text
-              const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
-                  'Bem-vindo(a) ao DinoDiary!',
+                  'Bem-vindo a DinoDiary',
                   style: TextStyle(
-                    color: Color(0xFFFAF3DD),
+                    color: AppStyle.accentColor2,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -103,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
               //username
               MyTextField(
                 controller: usernameController,
-                hintText: 'Email',
+                hintText: 'Usuario',
                 obscureText: false,
               ),
 
@@ -123,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                   MyTextBold(
                     isBold: false,
                     myText: 'Esqueceu a senha?',
-                    
+                    iscolorwhite: true,
                   ),
                 ],
               ),
@@ -136,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                 onTap: signUserIn,
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 50),
 
               const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -144,11 +142,12 @@ class _LoginPageState extends State<LoginPage> {
                   MyTextBold(
                     isBold: false,
                     myText: 'Ou continue aqui',
+                    iscolorwhite: true,
                   ),
                 ],
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 50),
               //todas as opcoes de login
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -158,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                       onTap: () => AuthService().signInWithGoogle(),
                       imagePath: 'lib/assets/images/google-logo.png'),
 
-                  SizedBox(width: 25),
+                  const SizedBox(width: 25),
 
                   //apple login
                   LoginWith(
@@ -174,24 +173,25 @@ class _LoginPageState extends State<LoginPage> {
                   const MyTextBold(
                     isBold: false,
                     myText: 'Sem Cadastro?',
+                    iscolorwhite: true,
                   ),
                   const SizedBox(width: 4),
                   GestureDetector(
                     onTap: widget.onTap,
-                    child: const Text(
+                    child: Text(
                       '  Registre-se aqui',
                       style: TextStyle(
-                        color: Colors.amberAccent,
+                        color: AppStyle.textcolor2,
                         //color: Color(0xff2822cd),
-                        fontSize: 18,
+                        fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ],
               ),
-
-              //const SizedBox(height: 50),
+              
+              const SizedBox(height: 30)
             ],
           ),
         ),

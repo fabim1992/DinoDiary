@@ -1,4 +1,5 @@
 import 'package:dino_diary/services/auth_service.dart';
+import 'package:dino_diary/style/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:dino_diary/widgets/login_with.dart';
 import 'package:dino_diary/widgets/my_button.dart';
@@ -61,7 +62,7 @@ class _RegisterPageState extends State<RegisterPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Color(0xFF9CE37D),
+          backgroundColor: Colors.deepPurple,
           title: Center(
               child: Text(
             message,
@@ -75,7 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF8FC0A9),
+      backgroundColor: AppStyle.mainColor,
       body: SafeArea(
         child: Center(
           child: ListView(
@@ -91,11 +92,11 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(height: 25),
 
               //text
-              const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Text(
                   'Registre-se no DinoDiary',
                   style: TextStyle(
-                    color: Color(0xFFFAF3DD),
+                    color: AppStyle.accentColor2,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -143,6 +144,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   MyTextBold(
                     isBold: false,
                     myText: 'Ou continue aqui',
+                    iscolorwhite: true,
                   ),
                 ],
               ),
@@ -157,7 +159,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       onTap: () => AuthService().signInWithGoogle(),
                       imagePath: 'lib/assets/images/google-logo.png'),
 
-                  SizedBox(width: 25),
+                  const SizedBox(width: 25),
 
                   //apple login
                   LoginWith(
@@ -173,16 +175,17 @@ class _RegisterPageState extends State<RegisterPage> {
                   const MyTextBold(
                     isBold: false,
                     myText: 'Ja tem uma conta?',
+                    iscolorwhite: true,
                   ),
                   const SizedBox(width: 4),
                   GestureDetector(
                     onTap: widget.onTap,
-                    child: const Text(
+                    child: Text(
                       '  Entre Aqui',
                       style: TextStyle(
-                        color: Colors.amberAccent,
+                        color: AppStyle.textcolor2,
                         //color: Color(0xff2822cd),
-                        fontSize: 18,
+                        fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

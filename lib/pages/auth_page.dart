@@ -1,6 +1,5 @@
-import 'package:dino_diary/pages/home_page.dart';
 import 'package:dino_diary/pages/login_or_register.dart';
-import 'package:dino_diary/pages/login_page.dart';
+import 'package:dino_diary/pages/note_editor.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -13,11 +12,11 @@ class AuthPage extends StatelessWidget {
       body: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
-          // usario logado
+          // usuário logado
           if (snapshot.hasData) {
-            return HomePage();
+            return NoteEditorPage(); 
           }
-          // usuario nao logado
+          // usuário não logado
           else {
             return LoginOrRegisterPage();
           }
@@ -26,3 +25,4 @@ class AuthPage extends StatelessWidget {
     );
   }
 }
+

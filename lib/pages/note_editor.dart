@@ -1,9 +1,11 @@
 import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dino_diary/style/app_style.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:dino_diary/widgets/my_appbar.dart';
+import 'package:dino_diary/widgets/my_navbar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class NoteEditorPage extends StatefulWidget {
   const NoteEditorPage({super.key});
@@ -13,23 +15,21 @@ class NoteEditorPage extends StatefulWidget {
 }
 
 class _NoteEditorPageState extends State<NoteEditorPage> {
-  int color_id = Random().nextInt(AppStyle.cardsColor.length);
-  String date = DateTime.now().toString();
-  TextEditingController _titleController = TextEditingController();
-  TextEditingController _mainController = TextEditingController();
+  int colorId = Random().nextInt(AppStyle.cardsColor.length);
+  DateTime now = DateTime.now();
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _mainController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    String date = DateFormat('yyyy-MM-dd').format(now);
+    
+    String dayOfWeek = DateFormat('EEEE').format(now);
+
     return Scaffold(
-      backgroundColor: AppStyle.cardsColor[color_id],
-      appBar: AppBar(
-        backgroundColor: AppStyle.cardsColor[color_id],
-        elevation: 0.0,
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Text(
-          "Adicionar novo registro",
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
+      bottomNavigationBar: MyNavbar(),
+      backgroundColor: AppStyle.cardsColor[colorId],
+      appBar: buildAppBar(context, "Adicionar novo registro"),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -37,27 +37,36 @@ class _NoteEditorPageState extends State<NoteEditorPage> {
           children: [
             TextField(
               controller: _titleController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 hintText: 'Titulo do registro',
               ),
               style: AppStyle.mainTitle,
             ),
-            SizedBox(
+            const SizedBox(
               height: 8.0,
             ),
-            Text(
-              date,
-              style: AppStyle.dateTitle,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  dayOfWeek,
+                  style: AppStyle.dateTitle,
+                ),
+                Text(
+                  date,
+                  style: AppStyle.dateTitle,
+                ),
+              ],
             ),
-            SizedBox(
-              height: 28.0,
+            const SizedBox(
+              height: 10.0,
             ),
             TextField(
               controller: _mainController,
               keyboardType: TextInputType.multiline,
               maxLines: null,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: InputBorder.none,
                 hintText: 'Escreva o registro',
               ),
@@ -66,21 +75,62 @@ class _NoteEditorPageState extends State<NoteEditorPage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: AppStyle.accentColor,
-        onPressed: () async {
-          FirebaseFirestore.instance.collection("Notes").add({
-            "note_title": _titleController.text,
-            "creation_date": date,
-            "note_content": _mainController.text,
-            "color_id": color_id
-          }).then((value) {
-            print(value.id);
-            Navigator.pop(context);
-          }).catchError((error) =>
-              print("Falha ao adicionar registro por causa de $error"));
-        },
-        child: Icon(Icons.save),
+      floatingActionButton: Container(
+        margin: const EdgeInsets.only(left: 30),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                fixedSize: MaterialStateProperty.all(const Size(50.0, 50.0)),
+                backgroundColor:
+                    MaterialStateProperty.all(AppStyle.accentColor),
+              ),
+              child: const Icon(Icons.edit),
+            ),
+            const SizedBox(width: 8.0),
+            ElevatedButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                fixedSize: MaterialStateProperty.all(const Size(50.0, 50.0)),
+                backgroundColor:
+                    MaterialStateProperty.all(AppStyle.accentColor),
+              ),
+              child: const Icon(Icons.palette),
+            ),
+            const SizedBox(width: 8.0),
+            ElevatedButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                fixedSize: MaterialStateProperty.all(const Size(50.0, 50.0)),
+                backgroundColor:
+                    MaterialStateProperty.all(AppStyle.accentColor),
+              ),
+              child: const Icon(Icons.text_format),
+            ),
+            const SizedBox(width: 16.0),
+            FloatingActionButton(
+              backgroundColor: AppStyle.accentColor,
+              onPressed: () async {
+                FirebaseFirestore.instance.collection("Notes").add({
+                  "note_title": _titleController.text,
+                  "creation_date": date,
+                  "note_content": _mainController.text,
+                  "color_id": colorId,
+                  "user_id": FirebaseAuth.instance.currentUser!.uid.toString()
+                }).then((value) {
+                  print(value.id);
+                  Navigator.maybePop(context);
+                }).catchError(
+                  (error) =>
+                      print("Falha ao adicionar registro por causa de $error"),
+                );
+              },
+              child: const Icon(Icons.save),
+            ),
+          ],
+        ),
       ),
     );
   }
